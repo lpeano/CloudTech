@@ -1,0 +1,6 @@
+{
+  "appId": "5719f887-5686-409a-98e8-68de92ef3ffa",
+  "displayName": "azk.peano.local",
+  "password": "knk8Q~N8QWpGIY2iJaVycr5GpnC8BzBMjLw4Ib5Z",
+  "tenant": "fb40ef64-324a-4d11-94b9-37dfae076ec9"
+}
