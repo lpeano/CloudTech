@@ -4,19 +4,28 @@ for_each = var.netsgs
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  security_rule {
-    name                       = "SSH"
-    priority                   = 1001
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "22"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
   
   tags = {
     environment = "Test"
   }
 }
+
+resource "azurerm_network_security_rule" "srules" {
+	count = length(local.sg_details)
+	name = 							local.sg_details[count.index].name
+	priority = 						local.sg_details[count.index].priority
+	access = 						local.sg_details[count.index].access
+	protocol = 						local.sg_details[count.index].protocol
+    direction = 					local.sg_details[count.index].direction
+	source_port_range = 			local.sg_details[count.index].source_port_range
+	destination_port_range = 		local.sg_details[count.index].destination_port_range
+	source_address_prefix = 		local.sg_details[count.index].source_address_prefix
+	destination_address_prefix = 	local.sg_details[count.index].destination_address_prefix
+    network_security_group_name = local.sg_details[count.index].security_group_name
+    resource_group_name = var.resource_group_name
+    depends_on = [
+		azurerm_network_security_group.nsg
+	]
+}
+
+	
