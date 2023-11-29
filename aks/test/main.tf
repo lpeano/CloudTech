@@ -25,6 +25,7 @@ resource "azurerm_subnet" "subnet" {
       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
     }
   }
+  depends_on = [ azurerm_virtual_network.peano-private-network ]
 }
 
 module "net_sg" {
