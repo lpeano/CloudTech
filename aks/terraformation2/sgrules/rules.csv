@@ -1,0 +1,4 @@
+name,priority,direction,access,protocol,destination_address_prefix,source_port_range,source_address_prefix,destination_port_range,security_group_name
+DenyAll,1001,Inbound,Allow,Tcp,*,*,*,*,nsg-aks
+HTTPS,1002,Inbound,Allow,Tcp,*,443,*,*,nsg-aks
+DenyAll,1001,Outbound,Allow,Tcp,*,*,*,*,nsg-aks
